@@ -67,8 +67,8 @@ class GoogleSearchContributor : WeightedSearchEverywhereContributor<SearchResult
     ) {
         val baseUrl = "http://google.com/search?q="
         val encodedQuery: String = URLEncoder.encode(pattern.replace("\n", ""), "UTF-8")
-        consumer.process(FoundItemDescriptor(SearchResult("Google", baseUrl + encodedQuery, "Search $encodedQuery"), 1000))
-        consumer.process(FoundItemDescriptor(SearchResult("Google", "$baseUrl$encodedQuery+site%3Astackoverflow.com", "Search $encodedQuery in Stack Overflow"), 1000))
+        consumer.process(FoundItemDescriptor(SearchResult("Google", baseUrl + encodedQuery, "Search $pattern"), 1000))
+        consumer.process(FoundItemDescriptor(SearchResult("Google", "$baseUrl$encodedQuery+site%3Astackoverflow.com", "Search $pattern in Stack Overflow"), 1000))
     }
 
     override fun getDataForItem(element: SearchResult, dataId: String): Any? = null
