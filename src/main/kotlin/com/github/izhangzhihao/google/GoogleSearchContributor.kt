@@ -65,9 +65,9 @@ class GoogleSearchContributor : WeightedSearchEverywhereContributor<SearchResult
         progressIndicator: ProgressIndicator,
         consumer: Processor<in FoundItemDescriptor<SearchResult>>
     ) {
-        val baseUrl = "http://google.com/search?q="
+        val baseUrl = "https://google.com/search?q="
         val encodedQuery: String = URLEncoder.encode(pattern.replace("\n", ""), "UTF-8")
-        consumer.process(FoundItemDescriptor(SearchResult("Google", baseUrl + encodedQuery, "Search $pattern"), 1000))
+        consumer.process(FoundItemDescriptor(SearchResult("Google", baseUrl + encodedQuery, "Google Search $pattern"), 1000))
         consumer.process(FoundItemDescriptor(SearchResult("Google", "$baseUrl$encodedQuery+site%3Astackoverflow.com", "Search $pattern in Stack Overflow"), 1000))
     }
 
