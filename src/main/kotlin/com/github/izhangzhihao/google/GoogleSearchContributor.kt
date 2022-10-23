@@ -1,5 +1,7 @@
 package com.github.izhangzhihao.google
 
+import com.google.gson.Gson
+import com.google.gson.JsonArray
 import com.intellij.ide.actions.SearchEverywherePsiRenderer
 import com.intellij.ide.actions.searcheverywhere.FoundItemDescriptor
 import com.intellij.ide.actions.searcheverywhere.WeightedSearchEverywhereContributor
@@ -9,9 +11,11 @@ import com.intellij.ui.SimpleTextAttributes
 import com.intellij.ui.speedSearch.SpeedSearchUtil
 import com.intellij.util.Processor
 import com.intellij.util.ui.UIUtil
+import org.apache.commons.io.IOUtils
 import java.awt.Color
 import java.awt.Desktop
 import java.net.URI
+import java.net.URL
 import java.net.URLEncoder
 import javax.swing.JList
 import javax.swing.ListCellRenderer
@@ -67,8 +71,41 @@ class GoogleSearchContributor : WeightedSearchEverywhereContributor<SearchResult
     ) {
         val baseUrl = "https://google.com/search?q="
         val encodedQuery: String = URLEncoder.encode(pattern.replace("\n", ""), "UTF-8")
-        consumer.process(FoundItemDescriptor(SearchResult("Google", baseUrl + encodedQuery, "Google Search $pattern"), 1000))
-        consumer.process(FoundItemDescriptor(SearchResult("Google", "$baseUrl$encodedQuery+site%3Astackoverflow.com", "Search $pattern in Stack Overflow"), 1000))
+        consumer.process(
+            FoundItemDescriptor(
+                SearchResult("Google", baseUrl + encodedQuery, "Google Search \"$pattern\""),
+                1000
+            )
+        )
+        consumer.process(
+            FoundItemDescriptor(
+                SearchResult(
+                    "Google",
+                    "$baseUrl$encodedQuery+site%3Astackoverflow.com",
+                    "Search \"$pattern\" in Stack Overflow"
+                ), 1000
+            )
+        )
+
+        val url = URL("https://suggestqueries.google.com/complete/search?client=firefox&q=$encodedQuery")
+
+        val con = url.openConnection()
+        val `in` = con.getInputStream()
+        val encoding: String = con.contentEncoding ?: "UTF-8"
+        val body: String = IOUtils.toString(`in`, encoding)
+        val res = Gson().fromJson(body, JsonArray::class.java)
+        res[1].asJsonArray.forEach {
+            val item = it.asString
+            consumer.process(
+                FoundItemDescriptor(
+                    SearchResult(
+                        "Google",
+                        baseUrl + (URLEncoder.encode(item.replace("\n", ""), "UTF-8")),
+                        "Google Search \"$item\""
+                    ), 1000
+                )
+            )
+        }
     }
 
     override fun getDataForItem(element: SearchResult, dataId: String): Any? = null
