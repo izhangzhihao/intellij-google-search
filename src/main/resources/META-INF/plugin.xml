@@ -1,18 +1,11 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.izhangzhihao.intellijgooglesearch</id>
-    <name>intellij-google-search</name>
+    <name>Google Search</name>
     <vendor>izhangzhihao</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.izhangzhihao.intellijgooglesearch.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.izhangzhihao.intellijgooglesearch.services.MyProjectService"/>
+        <searchEverywhereContributor implementation="com.github.izhangzhihao.google.GoogleSearchContributorFactory"/>
     </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.izhangzhihao.intellijgooglesearch.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>
