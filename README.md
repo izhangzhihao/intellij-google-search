@@ -15,7 +15,8 @@
 - [ ] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
 
 <!-- Plugin description -->
-This is a Google Search plugin for IntelliJ platform, now you could quickly open google search page with your selected text just in your IDE. 
+This is a Google Search plugin for IntelliJ platform, now you could quickly open google search page with your selected text just in your IDE.
+Even more, you could search with your selected text in Stack Overflow!
 <!-- Plugin description end -->
 
 ## Installation
