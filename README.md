@@ -14,7 +14,7 @@ Even more, you could search with your selected text in Stack Overflow!
 
 - Using IDE built-in plugin system:
   
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "intellij-google-search"</kbd> >
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Google Search"</kbd> >
   <kbd>Install Plugin</kbd>
   
 - Manually:
