@@ -4,6 +4,10 @@
 [![Version](https://img.shields.io/jetbrains/plugin/v/20230.svg)](https://plugins.jetbrains.com/plugin/20230)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/20230.svg)](https://plugins.jetbrains.com/plugin/20230)
 
+<img width="1069" alt="image" src="https://user-images.githubusercontent.com/12044174/198818490-26033a64-aea9-432c-b7f3-c0d6ffd69feb.png">
+
+[![YouTube](https://yt-embed.herokuapp.com/embed?v=EZULZgeGAK4)](https://www.youtube.com/watch?v=EZULZgeGAK4)
+
 
 <!-- Plugin description -->
 This is a Google Search plugin for IntelliJ platform, now you could quickly open google search page with your selected text just in your IDE.
