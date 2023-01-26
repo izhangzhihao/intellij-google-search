@@ -2,6 +2,7 @@
     <id>com.github.izhangzhihao.intellijgooglesearch</id>
     <name>Google Search</name>
     <vendor>izhangzhihao</vendor>
+    <idea-version since-build="213" until-build="*"/>
 
     <depends>com.intellij.modules.platform</depends>
 
