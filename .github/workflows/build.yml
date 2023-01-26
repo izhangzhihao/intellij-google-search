@@ -76,7 +76,6 @@ jobs:
           ./gradlew listProductsReleases # prepare list of IDEs for Plugin Verifier
 
       - name: Build Plugin Artifact
-        id: artifact
         shell: bash
         run: |
           ./gradlew buildPlugin
